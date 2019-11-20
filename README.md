@@ -1,32 +1,41 @@
 # React Apollo Graphql Boilerplate
 
-A Fullstack React Apollo Graphql Boilerplate written in Typescript.
+A Full-Stack React Apollo Graphql Boilerplate written in Typescript. A scalable development that focus on performance and best practices.
 
-## Client
+![alt text](https://i0.wp.com/blog.logrocket.com/wp-content/uploads/2019/06/building-graphql-react-app-typescript.png?w=1024&ssl=1)
 
+## Features
+
+### Client
+
+- [ESLint and Prettier](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project)
+- Typescript
 - React
 - React Router Dom
 - React-Apollo
-- Typescript
 - Styled Components
 - React Hook Form
+- Ant Design ( React CSS Framework )
+- Plop.js ( Code Generator )
 
-## Server
+### Server
 
+- Typescript
 - Node.js
 - Express
 - Graphql
 - Apollo Server
 - Mongoose
+- Plop.js ( Code Generator )
 
-### Checklists
+## TODO
 
-#### Client
+### Client
 
 - Scalfolding using plop.js
 - Auth Route
 - Test Cases
 
-#### Server
+### Server
 
 - Add Webpack

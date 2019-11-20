@@ -3,14 +3,13 @@
  * @see https://plopjs.com/documentation/#setgenerator
  */
 
-const fs = require('fs');
-const path = require('path');
+import componentGenerator from './component/index.js';
+import containerGenerator from './container/index.js';
 
-const componentGenerator = require('./component/index.js');
-const containerGenerator = require('./container/index.js');
-
-module.exports = plop => {
+const generators = plop => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('container', containerGenerator);
   plop.addHelper('curly', (_, open) => (open ? '{' : '}'));
 };
+
+export default generators;

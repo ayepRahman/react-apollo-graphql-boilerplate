@@ -6,9 +6,9 @@
 
 'use strict';
 
-const componentExists = require('../utils/componentExists');
+import componentExists from '../utils/componentExists';
 
-module.exports = {
+export default {
   description: 'Add an unconnected component',
   prompts: [
     {

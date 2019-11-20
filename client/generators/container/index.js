@@ -4,9 +4,9 @@
  * @see https://plopjs.com/documentation/#setgenerator
  */
 
-const componentExists = require('../utils/componentExists');
+import componentExists from '../utils/componentExists';
 
-module.exports = {
+export default {
   description: 'Add a container component',
   prompts: [
     {

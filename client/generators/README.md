@@ -42,6 +42,6 @@ Components focuses on reusability, styling
         -> /__tests__
 ```
 
-Todo Lists
+Check lists
 
 -

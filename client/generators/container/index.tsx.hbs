@@ -81,11 +81,9 @@ export const LazyGet{{ properCase name }} = () => {
 
 {{#if wantUseMutation}}
 export const Create{{ properCase name }} = () => {
-  const [createTodo,  { loading, error, data }] = useMutation(CREATE_{{constantCase name}}, {
-   
-  })
+  const [createTodo,  { loading, error, data }] = useMutation(CREATE_{{constantCase name}})
 
-  if (loading) return <div>...loading</div>
+  if (loading) return <div>...Loading</div>
   if (error) return <div>{JSON.stringify(error)}</div>
   return (
     <div>
@@ -173,6 +171,5 @@ export const {{ properCase name }} = props => {
     </div>
   );
 }
-
 
 export default {{ properCase name }}

@@ -1,4 +1,4 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+import { override, fixBabelImports, addLessLoader } from 'customize-cra';
 
 /**
  * Link to default antd default css
