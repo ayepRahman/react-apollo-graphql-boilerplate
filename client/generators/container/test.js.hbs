@@ -1,0 +1,56 @@
+/**
+ *
+ * Tests for {{ properCase name }}
+ *
+ * @see https://www.apollographql.com/docs/react/development-testing/testing/
+ *
+ */
+
+import React from 'react';
+import { render } from 'react-testing-library';
+import { MockedProvider } from '@apollo/react-testing';
+import { {{ properCase name }} } from '../index';
+// import { GET_TODOS, CREATE_TODOS } from '../gql'
+// import 'jest-dom/extend-expect'; // add some helpful assertions
+
+// Add defaults props for testing
+const defaultProps = {}
+
+// Add mocks for Apollo MockedProvider
+// const queryMock = {
+//   request: {
+//     query: "Add query gql" //GET_TODOS,
+//   },
+//   result: {
+//     data: {
+//       dog: { id: '1', task: 'Buy Blue Cheese' },
+//     },
+//   },
+// }
+// const mutationMock = {
+//   request: {
+//     mutation: "Add mutation gql", // CREATE_TODOS,
+//     variables: {
+//       task: 'Buy Iphone',
+//     },
+//   },
+//   result: {
+//     data: {
+//       dog: { id: '1', task: 'Buy Blue Cheese' },
+//     },
+//   },
+// }
+
+const providerMocks = [ queryMock, mutationMock ];
+
+const renderComponent = ({ providerMocks, props }) => render(
+  <MockedProvider mocks={providerMocks}>
+    <{{ properCase name }} {...defaultProps} {...props} />
+  </MockedProvider>
+)
+
+describe('<{{ properCase name }} />', () => {
+  it('should render on load', () => {
+    const {} = renderComponent({})
+  })
+});

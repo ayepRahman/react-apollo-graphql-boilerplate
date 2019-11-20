@@ -30,4 +30,3 @@ A Fullstack React Apollo Graphql Boilerplate written in Typescript.
 #### Server
 
 - Add Webpack
--
