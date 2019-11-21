@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-{{#if wantGraphql}}
 import { 
 {{#if wantUseQuery}}
   useQuery,
@@ -20,14 +19,14 @@ import {
   useSubscription,
 {{/if}}
 } from '@apollo/react-hooks'
-{{/if}}
 {{#if wantRouteHooks}}
 import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom'
 {{/if}}
 {{#if wantFormHooks}}
 import { Input, Button } from 'antd';
 import useForm from 'react-hook-form'
-import { fieldNames, validationSchema } from './models'
+import { validationSchema } from './validations'
+import { fieldNames } from './enumerations'
 {{/if}}
 import { 
   GET_{{constantCase name}},
@@ -99,7 +98,7 @@ export const Create{{ properCase name }} = () => {
 {{/if}}
 
 
-export const {{ properCase name }} = props => {
+export const {{ properCase name }}: React.FC = () => {
   {{#if wantFormHooks}}
   const { register, handleSubmit, setValue, errors, reset } = useForm({
     validationSchema,
@@ -126,7 +125,7 @@ export const {{ properCase name }} = props => {
 
   const Form = () => {
     return (
-      <form onSubmit={handleSubmit(onFormSubmit)}/>
+      <form onSubmit={handleSubmit(onFormSubmit)}>
         <Input
           onChange={e => setValue(fieldNames.firstName, e.target.value)}
           name={fieldNames.firstName}
@@ -157,7 +156,7 @@ export const {{ properCase name }} = props => {
           name={fieldNames.website}
           placeholder="Website"
         />
-        <Button type="primary" htmlType="submit" loading={loading}>Submit</Button>
+        <Button type="primary" htmlType="submit">Submit</Button>
       </form>
     )
   }

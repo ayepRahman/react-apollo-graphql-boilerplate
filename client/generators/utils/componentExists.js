@@ -10,8 +10,6 @@ const pageComponents = fs.readdirSync(path.join(__dirname, '../../src/app/compon
 const pageContainers = fs.readdirSync(path.join(__dirname, '../../src/app/containers'));
 const components = pageComponents.concat(pageContainers);
 
-function componentExists(comp) {
+module.exports = comp => {
   return components.indexOf(comp) >= 0;
-}
-
-module.exports = componentExists;
+};

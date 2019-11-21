@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Spin } from 'antd';
 
-interface Props {}
-
 const FullPageLoaderContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 9999;
@@ -19,7 +17,7 @@ const FullPageLoaderContainer = styled.div`
   width: 100%;
 `;
 
-const FullPageLoader: React.FC<Props> = () => {
+const FullPageLoader: React.FC = () => {
   return (
     <FullPageLoaderContainer>
       <Spin size="large" />

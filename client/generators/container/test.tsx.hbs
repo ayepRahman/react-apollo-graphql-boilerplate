@@ -1,13 +1,13 @@
 /**
  *
- * Tests for {{ properCase name }}
- *
+ * Tests 
+ * React testing library with React Apollo
  * @see https://www.apollographql.com/docs/react/development-testing/testing/
  *
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { {{ properCase name }} } from '../index';
 // import { GET_TODOS, CREATE_TODOS } from '../gql'
@@ -41,7 +41,7 @@ const defaultProps = {}
 //   },
 // }
 
-const providerMocks = [ queryMock, mutationMock ];
+// const providerMocks = [ queryMock, mutationMock ];
 
 const renderComponent = ({ providerMocks, props }) => render(
   <MockedProvider mocks={providerMocks}>

@@ -3,13 +3,12 @@
  * @see https://plopjs.com/documentation/#setgenerator
  */
 
-import componentGenerator from './component/index.js';
-import containerGenerator from './container/index.js';
+const componentGenerator = require('./component/index.js');
+const containerGenerator = require('./container/index.js');
 
-const generators = plop => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+module.exports = plop => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('container', containerGenerator);
   plop.addHelper('curly', (_, open) => (open ? '{' : '}'));
 };
-
-export default generators;

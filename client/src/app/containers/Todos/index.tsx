@@ -36,7 +36,7 @@ const ActiveNumber = styled.div`
   color: ${p => p.theme.colors.primary};
 `;
 
-const Todos: React.FC<Props> = () => {
+const Todos: React.FC = () => {
   return (
     <TodosContainer>
       <Header>
@@ -51,7 +51,5 @@ const Todos: React.FC<Props> = () => {
     </TodosContainer>
   );
 };
-
-interface Props {}
 
 export default Todos;

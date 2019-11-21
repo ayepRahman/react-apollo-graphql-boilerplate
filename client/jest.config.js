@@ -5,7 +5,7 @@ module.exports = {
   bail: true,
   moduleDirectories: ['node_modules', path.join(__dirname, 'src')],
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
-  collectCoverageFrom: ['src/app/**/*.{js,jsx,ts,tsx}', '!src/app/**/*.test.{js,jsx,ts,tsx}'],
+  collectCoverageFrom: ['src/app/**/__tests__/*.{js,jsx,ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -16,6 +16,6 @@ module.exports = {
   },
   displayName: {
     name: 'CLIENT',
-    color: 'orangered',
+    color: 'cyan',
   },
 };

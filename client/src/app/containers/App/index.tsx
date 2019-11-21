@@ -2,9 +2,10 @@ import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global';
 import FullPageLoader from 'app/components/Loaders/FullPageLoader';
-import Todos from 'app/containers/Todos';
 
-const App: React.FC<AppProps> = props => {
+const Todos = React.lazy(() => import('app/containers/Todos'));
+
+const App: React.FC = () => {
   return (
     <Suspense fallback={FullPageLoader}>
       <Switch>
@@ -16,7 +17,5 @@ const App: React.FC<AppProps> = props => {
     </Suspense>
   );
 };
-
-interface AppProps {}
 
 export default App;

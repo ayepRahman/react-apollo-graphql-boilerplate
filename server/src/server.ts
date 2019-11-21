@@ -1,14 +1,14 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import jwt from 'jsonwebtoken';
-import path from 'path';
-import dotenv from 'dotenv';
-import { ApolloServer, gql } from 'apollo-server-express';
-import mongooseConnect from './config/mongoose';
-import corsOptions from './config/corsOptions';
-import rootSchema from './features/rootSchema';
-import rootModels from './features/rootModels';
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import jwt from "jsonwebtoken";
+import path from "path";
+import dotenv from "dotenv";
+import { ApolloServer, gql } from "apollo-server-express";
+import mongooseConnect from "./config/mongoose";
+import corsOptions from "./config/corsOptions";
+import rootSchema from "./features/rootSchema";
+import rootModels from "./features/rootModels";
 
 // import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 // import { SubscriptionServer } from 'subscriptions-transport-ws';
@@ -30,14 +30,16 @@ const server = new ApolloServer({
   context: ({ req }) => {
     // console.log('req', req);
     return {
-      models: rootModels,
+      models: rootModels
     };
-  },
+  }
 });
 
 mongooseConnect();
 
 server.applyMiddleware({ app, cors: corsOptions });
 app.listen({ port: SERVER_PORT }, () =>
-  console.log(`🚀 Server ready at http://localhost:${SERVER_PORT}${server.graphqlPath}`)
+  console.log(
+    `🚀 Server ready at http://localhost:${SERVER_PORT}${server.graphqlPath}`
+  )
 );

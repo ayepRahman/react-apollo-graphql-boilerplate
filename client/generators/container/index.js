@@ -4,9 +4,9 @@
  * @see https://plopjs.com/documentation/#setgenerator
  */
 
-import componentExists from '../utils/componentExists';
+const componentExists = require('../utils/componentExists.js');
 
-export default {
+module.exports = {
   description: 'Add a container component',
   prompts: [
     {
@@ -101,8 +101,15 @@ export default {
     if (data.wantFormHooks) {
       actions.push({
         type: 'add',
-        path: '../src/app/containers/{{properCase name}}/model.tsx',
-        templateFile: './container/model.tsx.hbs',
+        path: '../src/app/containers/{{properCase name}}/validations.tsx',
+        templateFile: './container/validations.tsx.hbs',
+        abortOnFail: true,
+      });
+
+      actions.push({
+        type: 'add',
+        path: '../src/app/containers/{{properCase name}}/enumerations/index.tsx',
+        templateFile: './container/enumerations.tsx.hbs',
         abortOnFail: true,
       });
     }

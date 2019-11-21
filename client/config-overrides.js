@@ -1,5 +1,5 @@
-import { override, fixBabelImports, addLessLoader } from 'customize-cra';
-
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { override, fixBabelImports, addLessLoader } = require('customize-cra');
 /**
  * Link to default antd default css
  * https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
