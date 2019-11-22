@@ -1,10 +1,11 @@
 import React from 'react';
-import { Icon, Checkbox } from 'antd';
 import styled from 'styled-components';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import FullPageLoader from 'app/components/Loaders/FullPageLoader';
 import Divider from 'app/components/Divider/Divider';
-import { GET_TODOS, DELETE_TODO, UPDATE_TODOS } from './gql';
+import DeleteTodo from './DeleteTodo';
+import UpdateTodo from './UpdateTodo';
+import { GET_TODOS } from './gql';
 
 const EmptyContainer = styled.div`
   display: flex;
@@ -41,44 +42,8 @@ const ListsContent = styled.div<IListsContent>`
   text-decoration: ${p => p.checked && 'line-through'};
 `;
 
-const DeleteIcon = ({ id, refetch }: { id: string; refetch: () => any }) => {
-  const [deleteTodo] = useMutation(DELETE_TODO, { refetchQueries: [{ query: GET_TODOS }] });
-  const handleDelete = async () => {
-    try {
-      await deleteTodo({ variables: { id } });
-      await refetch();
-    } catch (error) {
-      console.log('ERROR', error);
-    }
-  };
-
-  return <Icon type="delete" onClick={handleDelete} />;
-};
-
-const UpdateCheckbox = ({ todo }: { todo: { id: string; task: string; checked: boolean } }) => {
-  const [updateTodos] = useMutation(UPDATE_TODOS, { refetchQueries: [{ query: GET_TODOS }] });
-  const handleChecked = (event: any, todo: object) => {
-    console.log('handleChecked', { event, todo });
-
-    updateTodos({
-      variables: {
-        ...todo,
-        checked: event.target.checked,
-      },
-    });
-  };
-
-  return (
-    <Checkbox
-      name="checked"
-      checked={todo.checked}
-      onChange={event => handleChecked(event, todo)}
-    />
-  );
-};
-
 const ListsTodos = () => {
-  const { loading, error, data, refetch } = useQuery(GET_TODOS, {
+  const { loading, error, data } = useQuery(GET_TODOS, {
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-and-network',
   });
@@ -93,11 +58,11 @@ const ListsTodos = () => {
             <React.Fragment key={index}>
               <ListsContainer>
                 <ListsLeftAppendix>
-                  <UpdateCheckbox todo={todo} />
+                  <UpdateTodo todo={todo} />
                   <ListsContent checked={todo.checked}>{todo.task}</ListsContent>
                 </ListsLeftAppendix>
                 <ListsRightAppendix>
-                  <DeleteIcon id={todo.id} refetch={refetch} />
+                  <DeleteTodo id={todo.id} />
                 </ListsRightAppendix>
               </ListsContainer>
               <Divider />

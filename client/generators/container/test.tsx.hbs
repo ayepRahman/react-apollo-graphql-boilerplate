@@ -8,8 +8,9 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider, MockedProviderProps } from '@apollo/react-testing';
 import { {{ properCase name }} } from '../index';
+import
 // import { GET_TODOS, CREATE_TODOS } from '../gql'
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
@@ -41,10 +42,9 @@ const defaultProps = {}
 //   },
 // }
 
-// const providerMocks = [ queryMock, mutationMock ];
 
-const renderComponent = ({ providerMocks, props }) => render(
-  <MockedProvider mocks={providerMocks}>
+const renderComponent = ({ mocks, props }: MockedProviderProps & { props: any }) => render(
+  <MockedProvider mocks={mocks}>
     <{{ properCase name }} {...defaultProps} {...props} />
   </MockedProvider>
 )

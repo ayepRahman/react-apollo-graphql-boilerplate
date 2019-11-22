@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  roots: ['<rootDir>/src'],
   verbose: true,
   bail: true,
   moduleDirectories: ['node_modules', path.join(__dirname, 'src')],
@@ -18,4 +19,12 @@ module.exports = {
     name: 'CLIENT',
     color: 'cyan',
   },
+  // Jest transformations -- this adds support for TypeScript
+  // using ts-jest
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  // when using React Testing Library and adds special
+  // extended assertions to Jest
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };
