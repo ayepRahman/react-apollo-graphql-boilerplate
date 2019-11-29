@@ -6,11 +6,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import useForm from 'react-hook-form';
-import * as yup from 'yup';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 import { useMutation } from '@apollo/react-hooks';
 import ErrorMessage from 'app/components/ErrorMessage';
 import { CREATE_TODO, GET_TODOS } from './gql';
+import { fieldNames } from './enumerations';
+import { createTodoValidationSchema } from './validations';
 
 const CreateTodosForm = styled.form`
   display: flex;
@@ -23,19 +24,8 @@ const CreateTodosForm = styled.form`
 `;
 
 const CreateTodos: React.FC<{}> = () => {
-  const fieldNames = {
-    task: 'task',
-  };
-
-  const validationSchema = yup.object().shape({
-    [fieldNames.task]: yup
-      .string()
-      .min(4)
-      .max(30)
-      .required(),
-  });
   const { register, handleSubmit, setValue, errors } = useForm({
-    validationSchema,
+    validationSchema: createTodoValidationSchema,
   });
 
   const [createTodos, { loading }] = useMutation(CREATE_TODO, {
@@ -59,13 +49,14 @@ const CreateTodos: React.FC<{}> = () => {
     <CreateTodosForm onSubmit={handleSubmit(onFormSubmit)}>
       <div>
         <Input
+          data-testid="task-input"
           onChange={e => setValue('task', e.target.value)}
           name={fieldNames.task}
           placeholder="Add more task...."
         />
         <ErrorMessage errors={errors} name={fieldNames.task} />
       </div>
-      <Button type="primary" htmlType="submit" loading={loading}>
+      <Button data-testid="create-button" type="primary" htmlType="submit" loading={loading}>
         Add Task
       </Button>
     </CreateTodosForm>

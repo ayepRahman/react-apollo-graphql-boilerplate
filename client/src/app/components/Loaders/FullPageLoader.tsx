@@ -19,7 +19,7 @@ const FullPageLoaderContainer = styled.div`
 
 const FullPageLoader: React.FC = () => {
   return (
-    <FullPageLoaderContainer>
+    <FullPageLoaderContainer data-testid="full-page-loader">
       <Spin size="large" />
     </FullPageLoaderContainer>
   );

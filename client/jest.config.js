@@ -6,7 +6,7 @@ module.exports = {
   bail: true,
   moduleDirectories: ['node_modules', path.join(__dirname, 'src')],
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
-  collectCoverageFrom: ['src/app/**/__tests__/*.{js,jsx,ts,tsx}'],
+  collectCoverageFrom: ['src/app/**/*.{js,jsx,ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -26,5 +26,5 @@ module.exports = {
   },
   // when using React Testing Library and adds special
   // extended assertions to Jest
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', 'jest-styled-components'],
 };

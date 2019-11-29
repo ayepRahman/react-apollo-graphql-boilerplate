@@ -49,7 +49,7 @@ const ListsTodos = () => {
   });
 
   if (loading) return <FullPageLoader />;
-  if (error) return <div style={{ color: '#fafafa' }}>{JSON.stringify(error)}</div>;
+  if (error) return <div style={{ color: 'red' }}>{error.message}</div>;
   return (
     <>
       {data.getTodos && data.getTodos.length ? (
@@ -70,7 +70,7 @@ const ListsTodos = () => {
           );
         })
       ) : (
-        <EmptyContainer>
+        <EmptyContainer data-testid="empty-container">
           You currrently have <EmptyNumber> 0 </EmptyNumber> task ! Add some more . . .
         </EmptyContainer>
       )}

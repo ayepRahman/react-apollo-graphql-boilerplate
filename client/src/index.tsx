@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
-import { theme } from 'styles/theme';
+import theme from 'styles/theme';
 import * as serviceWorker from './serviceWorker';
 import App from 'app/containers/App';
 
