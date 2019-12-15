@@ -4,6 +4,52 @@ A Full-Stack React Apollo Graphql Boilerplate written in Typescript. A scalable 
 
 ![alt text](https://i0.wp.com/blog.logrocket.com/wp-content/uploads/2019/06/building-graphql-react-app-typescript.png?w=1024&ssl=1)
 
+## Quick Start
+
+- Create a new repository at github.com. (this is your repository)
+- Run the following command in you cli.
+
+```
+git clone https://github.com/ayepRahman/react-apollo-graphql-boilerplate.git <YOU_PROJECT_NAME>
+cd <YOU_PROJECT_NAME>
+rm -rf .git
+git init
+git remote add origin https://github.com/<username>/<YOU_PROJECT_GIT_URL>.git
+git add .
+git commit -am 'initialize new project'
+git push origin master
+```
+
+# Installing
+
+```
+$ npm install
+
+#or
+
+$ yarn
+```
+
+- to run the project, server will run on `http://localhost:3000/`
+
+```
+$ npm run start
+
+#or
+
+$ yarn start
+```
+
+- to run tests
+
+```
+$ npm run test
+
+#or
+
+$ yarn test
+```
+
 ## Features
 
 #### Quick scaffolding
