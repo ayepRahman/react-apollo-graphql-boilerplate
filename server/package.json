@@ -2,10 +2,10 @@
   "name": "react-apollo-graphql-server",
   "version": "1.0.0",
   "description": "boilerplate for apollo graphql server",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "dev": "nodemon",
-    "start": "npm run build && node build/index.js",
+    "dev": "yarn ts-node-dev --respawn src/server.ts",
+    "start": "yarn build && node build/server.js",
     "build": "rimraf ./build && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,8 +20,7 @@
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "mongoose": "^5.7.5",
-    "nodemon": "^1.19.3"
+    "mongoose": "^5.7.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
@@ -34,8 +33,12 @@
     "@types/jsonwebtoken": "^8.3.5",
     "@types/mongoose": "^5.7.5",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
     "rimraf": "^3.0.0",
     "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4"
   }
