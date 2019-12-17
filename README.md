@@ -96,3 +96,5 @@ Build in css library Ant Design an enterprise-class UI design language and React
 - Prettier
 - Husky
 - Jest
+- graphql-compose
+- graphql-compose-mongoose

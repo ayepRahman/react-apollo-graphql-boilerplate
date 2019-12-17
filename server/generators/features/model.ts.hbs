@@ -1,0 +1,18 @@
+/*
+ * 
+ * graphql-compose-mongoose
+ */
+import mongoose, { Schema, Document } from 'mongoose';
+
+export interface I{{ properCase name  }}s extends Document {
+  checked: boolean;
+  task: string;
+}
+
+const {{ properCase name  }}sSchema: Schema = new Schema({
+  name: { type: String, required: true },
+});
+
+const {{ properCase name  }}s = mongoose.model<I{{ properCase name  }}s>('{{ properCase name  }}', {{ properCase name  }}sSchema);
+
+export { {{ properCase name  }}s };

@@ -4,6 +4,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
+  plugins: ["@typescript-eslint"],
   extends: [
     "airbnb-typescript/base",
     "plugin:jest/recommended",
