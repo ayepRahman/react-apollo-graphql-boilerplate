@@ -9,21 +9,19 @@ const typeDefs = `
   
     {{#if wantQuery}}
     type Query {
-      {{ camelCase name }}ById: 
-      {{ camelCase name }}ByIds:
-      {{ camelCase name }}One: 
-      {{ camelCase name }}Many: 
-      {{ camelCase name }}Count: 
-      {{ camelCase name }}Connection:
-      {{ camelCase name }}Pagination: 
+      {{ camelCase name }}ById: {{ properCase name }}!
+      {{ camelCase name }}ByIds: [{{ properCase name }}!]!
+      {{ camelCase name }}One: {{ properCase name }}!
+      {{ camelCase name }}Many: [{{ properCase name }}!
+      {{ camelCase name }}Count: [{{ properCase name }}!
     }
     {{/if}}
 
     {{#if wantMutation}}
     type Mutation {
-      createTodos(task: String!, checked: Boolean!): [Todos!]!
-      updateTodosById(id: ID!, task: String!, checked: Boolean!): [Todos!]!
-      deleteTodoById(id: ID!): [Todos!]!
+      create{{ propercaseCase name }}(task: String!, checked: Boolean!): [Todos!]!
+      update{{ propercaseCase name }}ById(id: ID!, task: String!, checked: Boolean!): [Todos!]!
+      delete{{ propercaseCase name }}Id(id: ID!): [Todos!]!
     }
     {{/if}}
 

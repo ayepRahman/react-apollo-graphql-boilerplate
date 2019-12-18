@@ -1,7 +1,7 @@
 import { IResolverMap } from "interfaces/IResolvers";
 
 export default <IResolverMap>{
-  createTodos: async (parent, args, { models }) => {
+  create{{ properCase name }}s: async (parent, args, { models }) => {
     const { task, checked } = args;
 
     try {
@@ -19,7 +19,7 @@ export default <IResolverMap>{
       throw new Error(error.message);
     }
   },
-  updateTodosById: async (parent, args, { models }) => {
+  update{{ properCase name }}sById: async (parent, args, { models }) => {
     const { id, task, checked } = args;
 
     try {
@@ -32,7 +32,7 @@ export default <IResolverMap>{
       throw new Error(error.message);
     }
   },
-  deleteTodoById: async (parent, args, { models }) => {
+  delete{{ properCase name }}ById: async (parent, args, { models }) => {
     const { id } = args;
 
     try {

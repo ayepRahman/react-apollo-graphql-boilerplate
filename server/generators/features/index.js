@@ -4,7 +4,7 @@
  * @see https://plopjs.com/documentation/#setgenerator
  */
 
-const componentExists = require("../utils/componentExists.js");
+const featuresExists = require("../utils/featuresExists.js");
 
 module.exports = {
   description: "Add a feature",
@@ -16,7 +16,7 @@ module.exports = {
       default: "user",
       validate: value => {
         if (/.+/.test(value)) {
-          return componentExists(value)
+          return featuresExists(value)
             ? "A feature with this name already exists"
             : true;
         }
@@ -35,13 +35,13 @@ module.exports = {
       name: "wantMutation",
       default: true,
       message: "Do you want to add graphql Mutation?"
-    },
-    {
-      type: "confirm",
-      name: "wantSubscription",
-      default: true,
-      message: "Do you want to add graphql Subscription?"
     }
+    // {
+    //   type: "confirm",
+    //   name: "wantSubscription",
+    //   default: true,
+    //   message: "Do you want to add graphql Subscription?"
+    // }
   ],
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   actions: data => {
@@ -90,14 +90,14 @@ module.exports = {
       });
     }
 
-    if (data.wantSubscription) {
-      actions.push({
-        type: "add",
-        path: "../src/features/{{camelCase name}}/resolvers/queries.ts",
-        templateFile: "./container/validations.tsx.hbs",
-        abortOnFail: true
-      });
-    }
+    // if (data.wantSubscription) {
+    //   actions.push({
+    //     type: "add",
+    //     path: "../src/features/{{camelCase name}}/resolvers/queries.ts",
+    //     templateFile: "./container/validations.tsx.hbs",
+    //     abortOnFail: true
+    //   });
+    // }
 
     return actions;
   }
