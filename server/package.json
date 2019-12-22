@@ -7,7 +7,11 @@
     "dev": "yarn ts-node-dev --respawn src/server.ts",
     "start": "yarn build && node build/server.js",
     "build": "rimraf ./build && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config='./jest.config.js' ",
+    "test:dev": "jest --config='./jest.config.js' --watchman",
+    "test:coverage": "jest --config='./jest.config.js' --coverage",
+    "generate": "plop --plopfile generators/index.js",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix"
   },
   "author": "",
   "license": "ISC",
@@ -41,5 +45,23 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged",
+      "pre-push": ""
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint . --fix",
+      "jest --config='./jest.config.js' --bail --coverage",
+      "git add"
+    ],
+    "*.{json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

@@ -91,11 +91,7 @@ $ yarn test
 
 ### Server
 
+- Test Cases
 - Add Webpack
-- Generators
-- Eslint
-- Prettier
-- Husky
-- Jest
 - graphql-compose
 - graphql-compose-mongoose
