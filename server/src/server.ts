@@ -16,10 +16,11 @@ import rootModels from "./features/rootModels";
 // import { models } from './src/features/rootModels';
 // import { refreshTokens } from './src/auth';
 
+// @dev enable using of env variable
 dotenv.config();
 
 const SERVER_PORT = process.env.SERVER_PORT || 4000;
-// Handling of secret
+// @dev Handling of secret
 // const SECRET = process.env.SECRET;
 // const SECRET_2 = process.env.SECRET_2;
 const app: express.Application = express();
@@ -44,7 +45,6 @@ const server = new ApolloServer({
 
 // MongoDB connection status
 mongooseConnect();
-
 server.applyMiddleware({ app, cors: corsOptions });
 app.listen({ port: SERVER_PORT }, () =>
   console.log(

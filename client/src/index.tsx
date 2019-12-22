@@ -1,6 +1,6 @@
 /**
  * Apollo Advanced Configuration
- * https://www.apollographql.com/docs/react/v2.5/advanced/boost-migration/
+ * https://www.apollographql.com/docs/react/migrating/boost-migration/
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -15,9 +15,7 @@ import { ApolloLink } from 'apollo-link';
 import theme from 'styles/theme';
 import * as serviceWorker from './serviceWorker';
 import App from 'app/containers/App';
-
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
 const cache = new InMemoryCache({});
 
 const link = ApolloLink.from([
@@ -31,8 +29,19 @@ const link = ApolloLink.from([
   }),
   new HttpLink({
     uri: SERVER_URL,
+    // For server with deifferent domain use "include"
+    credentials: 'same-origin',
   }),
 ]);
+
+const request = async (operation: any) => {
+  const token = await localStorage.getItem('token');
+  operation.setContext({
+    headers: {
+      authorization: token,
+    },
+  });
+};
 
 const client = new ApolloClient({
   link,
