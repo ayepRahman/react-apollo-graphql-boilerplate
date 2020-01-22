@@ -6,13 +6,21 @@ A Full-Stack React Apollo Graphql Boilerplate written in Typescript. A scalable 
 
 ## Features
 
-#### Quick scaffolding
+### Next Generation JavaScript with Typescript
 
-Create client components, containers and server graphql templates right from your CLI!
+- Stop worrying about browser support and use features like template strings, object destructuring, arrow functions, JSX syntax, and more today! Include Typescript in both client and server for high performing and robust code!
 
-#### CSS Framework
+### Next Generation CSS
 
-Build in css library Ant Design an enterprise-class UI design language and React UI library with a set of high-quality React components.
+- Usage of styled-component that allow uses of the best bits of ES6 and CSS to style your apps without stress!
+
+### Quick Scaffolding
+
+- Automate the creation of components, containers, features - and their tests - right from the CLI! Avoid fighting the glue of your code and focus on your app!
+
+### GraphQL
+
+- GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data
 
 #### Client
 
