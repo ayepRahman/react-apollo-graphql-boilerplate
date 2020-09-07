@@ -1,0 +1,30 @@
+/**
+ * {{ properCase name }} Query
+ */
+
+import { ResolverMap } from 'interfaces/ResolverMap';
+import { ResolverResponseStatus } from 'enums/ResolverResponseStatus';
+import { {{ constantCase name }}_STATE } from 'apollo/gql/{{ camelCase name }}';
+
+const {{ camelCase name }}Query: ResolverMap = {
+  get{{ properCase name }}State: async (root, args, { cache }) => {
+    try {
+      const data: any = cache.readQuery({
+        query: {{ constantCase name }}_STATE,
+      });
+      const {{ camelCase name }} = data && data.{{ camelCase name }};
+      return {
+        data: {{ camelCase name }},
+        status: ResolverResponseStatus.Success,
+      };
+    } catch (error) {
+      return {
+        status: ResolverResponseStatus.Failure,
+        message: error.message,
+      };
+    }
+  },
+};
+
+export default {{ camelCase name }}Query;
+

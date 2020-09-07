@@ -1,0 +1,19 @@
+import gql from 'graphql-tag';
+
+{{#if wantQuery}}
+export const {{ constantCase name }}_STATE = gql`
+  query {
+    {{ camelCase name }} @client {
+      accessToken
+    }
+  }
+`;
+{{/if}}
+
+{{#if wantMutation}}
+export const SET_{{ constantCase name }}_STATE = gql`
+  mutation Set{{ properCase name }}State($accessToken: String) {
+    set{{ properCase name }}State(accessToken: $accessToken) @client
+  }
+`;
+{{/if}}

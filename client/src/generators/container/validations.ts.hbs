@@ -1,0 +1,34 @@
+/*
+ * VALIDATIONS 
+ * Object schema validation
+ * @see https://github.com/jquense/yup
+ */
+
+import * as yup from 'yup';
+import { FieldNames } from './enums'
+
+export const validationSchema = yup.object().shape({
+  [FieldNames.FIRST_NAME]: yup
+    .string()
+    .min(4)
+    .max(30)
+    .required(),
+  [FieldNames.LAST_NAME]: yup
+    .string()
+    .min(4)
+    .max(30)
+    .required(),
+  [FieldNames.PASSWORD]: yup
+    .string()
+    .min(8)
+    .max(30)
+    .required(),
+  [FieldNames.EMAIL]: yup
+    .string()
+    .email()
+    .required(),
+  [FieldNames.WEBSITE]: yup
+    .string()
+    .url()
+    .required(),
+});

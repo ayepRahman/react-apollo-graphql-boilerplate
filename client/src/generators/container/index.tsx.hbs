@@ -1,0 +1,225 @@
+/**
+ * {{properCase name }}
+ */
+
+import React from 'react';
+import { 
+{{#if wantUseQuery}}
+  useQuery,
+{{/if}}
+{{#if wantUseLazyQuery}}
+  useLazyQuery,
+{{/if}}
+{{#if wantUseMutation}}
+  useMutation,
+{{/if}}
+{{#if wantUseSubscription}}
+  useSubscription,
+{{/if}}
+} from '@apollo/react-hooks'
+{{#if wantRouteHooks}}
+import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom'
+{{/if}}
+{{#if wantFormHooks}}
+import { Form } from 'semantic-ui-react';
+import { useForm, ErrorMessage, Controller } from 'react-hook-form'
+import Button from 'components/Button';
+import Input from 'components/Input';
+import { validationSchema } from './validations'
+import { FieldNames } from './enums'
+import { {{properCase name }}Props } from './interfaces'
+{{/if}}
+import { 
+  GET_{{constantCase name}},
+  CREATE_{{constantCase name}},
+} from './gql'
+{{#if wantStyledComponents}}
+import styled from 'styled-components'
+import { Container } from './styled'
+{{/if}}
+
+
+
+{{#if wantUseQuery}}
+// @dev call query when component render
+export const Get{{ properCase name }} = () => {
+  const { loading, error, data } = useQuery(GET_{{constantCase name}}, {
+    variables: {
+      name: 'John Doe'
+    }
+  })
+
+  if (loading) return <div>...loading</div>
+  if (error) return <div>{JSON.stringify(error)}</div>
+  return (
+    <div>{JSON.stringify(data)}</div>
+  )
+}
+{{/if}}
+
+{{#if wantUseLazyQuery}}
+// @dev return function that you can call to execute query
+export const LazyGet{{ properCase name }} = () => {
+  const [getTodos, { loading, error, data }] = useLazyQuery(GET_{{constantCase name}})
+
+  React.useEffect(() => {
+    getTodos({
+      variables: {
+        name: 'John Doe'
+      }
+    })
+  }, [])
+
+  if (loading) return <div>...loading</div>
+  if (error) return <div>{JSON.stringify(error)}</div>
+  return (
+    <div>{JSON.stringify(data)}</div>
+  )
+}
+{{/if}}
+
+{{#if wantUseMutation}}
+export const Create{{ properCase name }} = () => {
+  const [createTodo,  { loading, error, data }] = useMutation(CREATE_{{constantCase name}})
+
+  if (loading) return <div>...Loading</div>
+  if (error) return <div>{JSON.stringify(error)}</div>
+  return (
+    <div>
+      <button 
+        type="button"
+        onClick={() => createTodo({ 
+          variables: { task: 'Buy Something', checked: true }  
+        })}
+      >Add Todo</button>
+      <div>{JSON.stringify(data)}</div>
+    </div>
+  )
+}
+{{/if}}
+
+
+{{#if wantFormHooks}}
+const Form = () => {
+  const { register, handleSubmit, errors: formErrors } = useForm({
+    validationSchema,
+    defaultValues: {
+      [FieldNames.FIRST_NAME]: "bill",
+      [FieldNames.LAST_NAME]: "luo",
+      [FieldNames.PASSWORD]: '123123123',
+      [FieldNames.EMAIL]: "bluebill1049@hotmail.com",
+      [FieldNames.WEBSITE]: 'www.google.com',
+    }
+  });
+
+  const onSubmit = handleSubmit(async (values) => {
+    try {
+      // Do something
+    } catch (error) {
+      // Do something
+    }
+  });
+
+  return (
+    <Form onSubmit={onSubmit}>
+      <Form.Field>
+        <Controller
+          as={
+            <Input
+              data-testid="input-first-name"
+              label="First Name"
+              error={!!formErrors[FieldNames.FIRST_NAME]}
+              helper={<ErrorMessage errors={formErrors} name={FieldNames.FIRST_NAME} />}
+            />
+          }
+          name={FieldNames.FIRST_NAME}
+          control={control}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Controller
+          as={
+            <Input
+              data-testid="input-last-name"
+              label="Last Name"
+              error={!!formErrors[FieldNames.LAST_NAME]}
+              helper={<ErrorMessage errors={formErrors} name={FieldNames.LAST_NAME} />}
+            />
+          }
+          name={FieldNames.LAST_NAME}
+          control={control}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Controller
+          as={
+            <Input
+              data-testid="input-password"
+              label="Password"
+              error={!!formErrors[FieldNames.PASSWORD]}
+              helper={<ErrorMessage errors={formErrors} name={FieldNames.PASSWORD} />}
+            />
+          }
+          name={FieldNames.PASSWORD}
+          type='password'
+          control={control}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Controller
+          as={
+            <Input
+              data-testid="input-email"
+              label="Email"
+              error={!!formErrors[FieldNames.EMAIL]}
+              helper={<ErrorMessage errors={formErrors} name={FieldNames.EMAIL} />}
+            />
+          }
+          name={FieldNames.EMAIL}
+          control={control}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Controller
+          as={
+            <Input
+              data-testid="input-first-name"
+              label="Website"
+              error={!!formErrors[FieldNames.WEBSITE]}
+              helper={<ErrorMessage errors={formErrors} name={FieldNames.WEBSITE} />}
+            />
+          }
+          name={FieldNames.WEBSITE}
+          control={control}
+        />
+      </Form.Field>
+      <Button primary type="submit">
+        Submit
+      </Button>
+    </Form>
+  )
+  
+}
+{{/if}}
+
+const {{ properCase name }}: React.FC<{{properCase name }}Props> = () => {
+  return (
+    <div>
+        {{#if wantFormHooks}}
+        <Form />
+        {{/if}}
+        {{#if wantUseQuery}}
+        <Get{{ properCase name }} />
+        {{/if}}
+        {{#if wantUseLazyQuery}}
+        <LazyGet{{ properCase name }} />
+        {{/if}}
+        {{#if wantUseMutation}}
+        <Create{{ properCase name }} />
+        {{/if}}
+
+    </div>
+  );
+}
+
+export default {{ properCase name }}

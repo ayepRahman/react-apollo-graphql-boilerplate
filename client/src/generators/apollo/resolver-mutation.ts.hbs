@@ -1,0 +1,27 @@
+/**
+ * {{ properCase name }} Mutation
+ */
+
+import { ResolverMap } from 'interfaces/ResolverMap';
+import { ResolverResponseStatus } from 'enums/ResolverResponseStatus';
+
+const {{ camelCase name }}Mutation: ResolverMap =  {
+  set{{ properCase name }}State: async (root, args, { cache }, info) => {
+    try {
+      const data = {
+        {{ camelCase name }}: {
+          __typename: '{{camelCase name }}',
+        },
+      };
+      cache.writeData({ data });
+      return { status: ResolverResponseStatus.Success };
+    } catch (error) {
+      return {
+        status: ResolverResponseStatus.Failure,
+        message: error.message,
+      };
+    }
+  },
+};
+
+export default {{ camelCase name }}Mutation;

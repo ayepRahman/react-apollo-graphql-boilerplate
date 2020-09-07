@@ -14,7 +14,7 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 import theme from 'styles/theme';
 import * as serviceWorker from './serviceWorker';
-import App from 'app/containers/App';
+import App from 'containers/App';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const cache = new InMemoryCache({});
 
